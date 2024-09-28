@@ -24,15 +24,18 @@ public class EmailService {
     @Autowired
     private SpringTemplateEngine templateEngine;
 
-    public void sendEmail(Mail mail) throws MessagingException, IOException {
+    public void sendEmail(String to, String subject, String templateName, Context context) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
+        MimeMessageHelper helper = new MimeMessageHelper(message,
+                MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
                 StandardCharsets.UTF_8.name());
-        String html = getHtmlContent(mail);
-        helper.setTo(mail.getTo());
-        helper.setFrom(mail.getFrom());
-        helper.setSubject(mail.getSubject());
+
+        String html = templateEngine.process(templateName, context);
+
+        helper.setTo(to);
+        helper.setSubject(subject);
         helper.setText(html, true);
+
         mailSender.send(message);
     }
 

@@ -14,6 +14,7 @@ public class TicketController {
     @PostMapping
     public ResponseEntity<Ticket> createTicket(@RequestBody TicketRequest request) {
         Ticket newTicket = ticketService.createTicket(request.getEstudianteId(), request.getFuncionId(), request.getCantidad());
+        ticketService.enviarConfirmacionReserva("yitzhak.namihas@utec.edu.pe",request.getEstudianteId(),request.getFuncionId(),"base64EncodedQRCode");
         return ResponseEntity.ok(newTicket);
     }
 
