@@ -71,7 +71,7 @@ public class TicketService {
     @Autowired
     private EmailService emailService;
 
-    public void enviarConfirmacionReserva(String emailDestino, Long estudianteid, Long funcion_id, String qrCode) {
+    public void enviarConfirmacionReserva(String emailDestino, Long estudianteid, Long funcion_id,Ticket ticket) {
         Context context = new Context();
         Funcion funcion = funcionRepository.findById(funcion_id).orElse(null);
         Estudiante estudiante = estudianteRepository.findById(estudianteid).orElse(null);
@@ -80,7 +80,7 @@ public class TicketService {
         context.setVariable("fechaFuncion", funcion.getFecha().toString());
         context.setVariable("cantidadEntradas", funcion.getStock());
         context.setVariable("precioTotal", funcion.getPrecio().toString());
-        context.setVariable("qr", qrCode);
+        context.setVariable("qr", ticket.getQr());
 
         try {
             emailService.sendEmail(emailDestino, "Confirmación de Reserva", "confirmacion-reserva", context);
