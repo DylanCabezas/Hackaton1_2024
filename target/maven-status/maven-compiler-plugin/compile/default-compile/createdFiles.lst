@@ -1,0 +1,15 @@
+dbp\hackathon\Ticket\Estado.class
+dbp\hackathon\Estudiante\EstudianteRepository.class
+dbp\hackathon\Funcion\FuncionRepository.class
+dbp\hackathon\Estudiante\EstudianteController.class
+dbp\hackathon\HackathonApplication.class
+dbp\hackathon\Ticket\Ticket.class
+dbp\hackathon\Funcion\FuncionController.class
+dbp\hackathon\Ticket\TicketService.class
+dbp\hackathon\Estudiante\EstudianteService.class
+dbp\hackathon\Ticket\TicketRequest.class
+dbp\hackathon\Funcion\Funcion.class
+dbp\hackathon\Funcion\FuncionService.class
+dbp\hackathon\Ticket\TicketController.class
+dbp\hackathon\Estudiante\Estudiante.class
+dbp\hackathon\Ticket\TicketRepository.class
